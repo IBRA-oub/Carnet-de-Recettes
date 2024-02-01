@@ -104,7 +104,7 @@ class RecetteControler extends Controller
             'description'=> 'required',
             'ingredients'=> 'required',
             'prepare'=> 'required',
-            'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            // 'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             // au cas ona integer  'origin'=> ['required','integer']
         ]);
 
@@ -114,12 +114,11 @@ class RecetteControler extends Controller
         $updateRecette->ingredients = $request->input('ingredients');
         $updateRecette->prepare = $request->input('prepare');
 
-        if ($updateRecette->hasFile('picture')) {
+        if ($request->hasFile('picture')) {
             $file = $request->file('picture');
             $pictureName = time() . '.' . $file->extension();
             $file->storeAs('public/image', $pictureName);
             $updateRecette->picture = $pictureName;
-            
         }
        
         

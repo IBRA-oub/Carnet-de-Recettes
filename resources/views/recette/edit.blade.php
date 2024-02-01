@@ -84,11 +84,7 @@
                             PNG, JPG, GIF up to 10MB
                         </p>
                     </div>
-                    @error('picture')
-                    <div class="text-red-500">
-                        {{$message}}
-                    </div>
-                    @enderror
+                    
                 </div>
             </div>
     
