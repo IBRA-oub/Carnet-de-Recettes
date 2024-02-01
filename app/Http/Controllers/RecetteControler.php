@@ -97,7 +97,7 @@ class RecetteControler extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Recette $recette ,Request $request)
     {
         $request->validate([
             'title'=> 'required',
@@ -108,23 +108,27 @@ class RecetteControler extends Controller
             // au cas ona integer  'origin'=> ['required','integer']
         ]);
 
-        $updateRecette = Recette::findOrFail($id);
+        $oldPicture = $recette->picture;
+        
+        $updateRecette = Recette::findOrFail($recette->id);
         $updateRecette->title = $request->input('title');
         $updateRecette->description = $request->input('description');
         $updateRecette->ingredients = $request->input('ingredients');
         $updateRecette->prepare = $request->input('prepare');
 
+        
+        
         if ($request->hasFile('picture')) {
             $file = $request->file('picture');
             $pictureName = time() . '.' . $file->extension();
             $file->storeAs('public/image', $pictureName);
             $updateRecette->picture = $pictureName;
         }
-       
         
+       
         $updateRecette->save();
 
-        return redirect()->route('recette.show' , $id);
+        return redirect()->route('recette.index');
     }
 
     /**

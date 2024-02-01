@@ -14,8 +14,6 @@ use App\Http\Controllers\RecetteControler;
 |
 */
 
-Route::get('/', function () {
-    return view('recette.index');
-});
+Route::get('/', [RecetteControler::class, 'index']);
 
 Route::resource('recette',RecetteControler::class);

@@ -13,7 +13,7 @@
 
         <h1 class="text-3xl font-bold text-black capitalize mb-4">update Recette</h1>
     
-        <form action="{{route('recette.update', ['recette' => $editRecette->id])}}" method="POST" 
+        <form action="{{route('recette.update', ['recette' => $editRecette->id])}}" method="POST" enctype="multipart/form-data"
             class="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {{-- cross site request forgery / csr  --}}
             @csrf

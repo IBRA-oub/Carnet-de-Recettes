@@ -36,7 +36,7 @@
 
       
 
-        @if(!empty($recette) && count($recette) > 0)
+        {{-- @if( count($recette) > 0) --}}
         <div class="min-h-screen  flex justify-center items-center py-20">
             <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-4 md:space-y-0">
               @foreach($recette as $rec)
@@ -44,7 +44,7 @@
                     <h3 class="mb-3 text-xl font-bold text-indigo-600">{{$rec['title']}}</h3>
                     <div class="relative">
                     <img class="w-full rounded-xl" src="{{ asset('storage/image/' . $rec['picture']) }}" alt="Colors" />
-                  @dd($rec['picture']);
+                 
                     </div>
                     <p class="mt-4 text-gray-800 whitespace-pre-line   cursor-pointer">{{$rec['description']}}</p>
                     <div class="my-4">
@@ -58,9 +58,9 @@
              
             </div>
           </div>
-      @else
+      {{-- @else
       <p>there is no data to show</p>
-      @endif
+      @endif --}}
     
 </body>
 </html>
