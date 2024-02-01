@@ -17,3 +17,5 @@ use App\Http\Controllers\RecetteControler;
 Route::get('/', [RecetteControler::class, 'index']);
 
 Route::resource('recette',RecetteControler::class);
+
+Route::get('/search', [RecetteControler::class , 'search'])->name('recette.search');

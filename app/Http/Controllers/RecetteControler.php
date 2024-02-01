@@ -97,7 +97,7 @@ class RecetteControler extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Recette $recette ,Request $request)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'title'=> 'required',
@@ -108,9 +108,9 @@ class RecetteControler extends Controller
             // au cas ona integer  'origin'=> ['required','integer']
         ]);
 
-        $oldPicture = $recette->picture;
         
-        $updateRecette = Recette::findOrFail($recette->id);
+        
+        $updateRecette = Recette::findOrFail($id);
         $updateRecette->title = $request->input('title');
         $updateRecette->description = $request->input('description');
         $updateRecette->ingredients = $request->input('ingredients');
@@ -142,5 +142,12 @@ class RecetteControler extends Controller
         $deleteRecette = Recette::findOrFail($id);
         $deleteRecette->delete();
         return redirect()->route('recette.index');
+    }
+
+    public function search(Request $request){
+        $search_text = $request->input('search');
+        $recette = Recette::where('title', 'LIKE' , '%' . $search_text. '%')->get();
+
+        return view('recette.search', ['recette'=> $recette, 'search'=> $search_text]);
     }
 }
