@@ -12,7 +12,7 @@
     <title>create Page</title>
 </head>
 <body>
-    <section class="max-w-4xl p-6 mx-auto  bg-gray-200 rounded-md shadow-xl mt-[9%]">
+    <section class="max-w-4xl p-6 mx-auto  bg-gray-200 rounded-md shadow-xl mt-[5%]">
 
         <h1 class="text-3xl font-bold text-black capitalize mb-4">Create Recette</h1>
     
